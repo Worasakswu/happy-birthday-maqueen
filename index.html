@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test web bd</title>
+    <!-- Favicon รูปเค้ก -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="assets/videos/aurora.mp4" type="video/mp4">
+        เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
+    </video>
+    
+    <div class="bg-particles"></div>
+
+    <div class="layout-wrapper" id="layout-wrapper">
+        <div class="card-container">
+            
+            <!-- Page 1: Welcome -->
+            <div class="card-page active" id="page-welcome">
+                <div style="font-size: 4rem; margin-bottom: 10px; animation: bounce 2s infinite;">🎂</div>
+                <h1>Happy Birthday นะมิ้ง!</h1>
+                <p>มีความสุขมากๆ ในทุกๆ วันนะ :)</p>
+                <button class="btn-style" onclick="goToPage('page-gallery')">เปิดกล่องของขวัญ</button>
+                <style>
+                    @keyframes bounce {
+                        0%, 100% { transform: translateY(0); }
+                        50% { transform: translateY(-10px); }
+                    }
+                </style>
+            </div>
+
+            <!-- Page 2: Gallery -->
+            <div class="card-page" id="page-gallery">
+                <h2>ความทรงจำดีๆ :)</h2>
+                <div class="photo-frame">
+                    <img src="assets/images/salisa.png" alt="salisaa">
+                </div>
+                <p class="small">ตั้งแต่ปีแรกจนถึงวันนี้ ขอบคุณที่มีเธอนะ</p>
+                <button class="btn-style" onclick="goToPage('page-wishes')">อ่านคำอวยพร</button>
+            </div>
+
+            <!-- Page 3: Wishes -->
+            <div class="card-page" id="page-wishes">
+                <h2>HBD MING! 💖</h2>
+                <div class="wish-text" id="typewriter-text">
+                    <!-- Text will be typed here -->
+                </div>
+                <button class="btn-style" onclick="goToCards()">🎉สุ่มการ์ดครับ!:) </button>
+            </div>
+
+            <!-- Page 4: Choose a Card -->
+            <div class="card-page" id="page-cards">
+                <h2>สุ่มการ์ด 1 ใบ 🔮</h2>
+                <p class="small">ลองเลือกมาซักใบดูสิ==)</p>
+                
+                <div class="tarot-container">
+                    <div class="tarot-card" onclick="flipCard(this, 1)">
+                        <div class="tarot-inner">
+                            <div class="tarot-front">?</div>
+                            <div class="tarot-back">✨
+                                <div id="msg-data-1" style="display: none;">
+                                    รอใส่ข้อความที่ 1 ตรงนี้...<br><br>สามารถเขียนยาวๆ ได้เลย มันจะแสดงในกล่องข้อความด้านขวาอย่างสวยงาม
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tarot-card" onclick="flipCard(this, 2)">
+                        <div class="tarot-inner">
+                            <div class="tarot-front">?</div>
+                            <div class="tarot-back">✨
+                                <div id="msg-data-2" style="display: none;">
+                                    รอใส่ข้อความที่ 2 ตรงนี้...<br><br>มีความในใจอะไรอยากบอก พิมพ์ใส่ตรงนี้ได้เลย!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tarot-card" onclick="flipCard(this, 3)">
+                        <div class="tarot-inner">
+                            <div class="tarot-front">?</div>
+                            <div class="tarot-back">✨
+                                <div id="msg-data-3" style="display: none;">
+                                    รอใส่ข้อความที่ 3 ตรงนี้...<br><br>ไม่ต้องกลัวล้น เพราะกล่องข้อความสามารถเลื่อนอ่าน (scroll) ได้ครับ
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- เอาปุ่มกลับหน้าแรกไปไว้ในกรอบขวาแทน -->
+            </div>
+
+        </div>
+
+        <!-- กล่องข้อความด้านขวา -->
+        <div class="message-box" id="message-box">
+            <h3>💌 ความในใจ...</h3>
+            <div class="msg-content" id="msg-content">
+                <!-- ข้อความจะถูกนำมาใส่ตรงนี้ -->
+            </div>
+            <button class="btn-style" onclick="goToPage('page-welcome')" style="margin-top: 1.5rem; width: 100%; padding: 12px; font-size: 1rem;">กลับหน้าแรก 🏠</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
