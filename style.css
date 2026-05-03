@@ -10,9 +10,11 @@ body {
     align-items: center;
     min-height: 100vh;
     font-family: 'Kanit', sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto; /* allow scroll if screen is too small */
     background-color: #0f172a; 
     color: #fff;
+    padding: 20px 0;
 }
 
 /* --- สไตล์ของ Video Background --- */
@@ -36,20 +38,21 @@ body {
     justify-content: center;
     position: relative;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1400px;
     transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .layout-wrapper.shift-left {
-    transform: translateX(-220px); /* ขยับไปซ้ายเพื่อให้มีที่ว่างด้านขวาเพิ่มขึ้นสำหรับกล่องที่ใหญ่ขึ้น */
+    transform: translateX(-290px); /* ขยับไปซ้ายเพื่อให้มีที่ว่างด้านขวาเพิ่มขึ้น */
 }
 
 /* --- สไตล์ของ Card และ Animation การเปลี่ยนหน้า --- */
 .card-container {
     position: relative;
-    width: 90%;
-    max-width: 400px;
-    height: 520px; 
+    width: 90vw;
+    max-width: 540px;
+    height: 880px; 
+    max-height: 95vh; /* Responsive height */
     perspective: 1200px;
     animation: float 6s ease-in-out infinite;
     z-index: 2;
@@ -69,7 +72,7 @@ body {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 2.5rem 2rem;
+    padding: 4rem 3rem;
     border-radius: 24px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     text-align: center;
@@ -83,6 +86,7 @@ body {
     transform: scale(0.9) rotateX(-10deg) translateY(30px);
     pointer-events: none;
     z-index: 1;
+    overflow: hidden; /* ป้องกันไม่ให้รูปพื้นหลังที่ซ้อนกันทะลุขอบโค้ง */
 }
 
 .card-page.active {
@@ -92,10 +96,66 @@ body {
     z-index: 2;
 }
 
+/* เพิ่มรูปพื้นหลังลางๆ เฉพาะหน้าแรก */
+#page-welcome {
+    background: linear-gradient(rgba(30, 30, 40, 0.85), rgba(30, 30, 40, 0.85)), url('assets/images/salisakid.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#page-welcome::before, #page-welcome::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+}
+
+/* รูปที่ 2: smile.JPEG */
+#page-welcome::before {
+    background-image: linear-gradient(rgba(30, 30, 40, 0.85), rgba(30, 30, 40, 0.85)), url('assets/images/smile.JPEG');
+    z-index: -2;
+    animation: fadeSmile 15s infinite;
+}
+
+/* รูปที่ 3: tt.jpg */
+#page-welcome::after {
+    background-image: linear-gradient(rgba(30, 30, 40, 0.85), rgba(30, 30, 40, 0.85)), url('assets/images/tt.jpg');
+    z-index: -1;
+    animation: fadeTT 15s infinite;
+}
+
+@keyframes fadeSmile {
+    0%, 23% { opacity: 0; }
+    33%, 66% { opacity: 1; }
+    70%, 100% { opacity: 0; }
+}
+
+@keyframes fadeTT {
+    0%, 56% { opacity: 0; }
+    66%, 90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* วิดีโอพื้นหลังเฉพาะหน้า */
+.page-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.15; /* ทำให้จางๆ */
+    pointer-events: none;
+    border-radius: 24px;
+}
+
 /* สไตล์ข้อความ */
 h1 { 
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
     background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -103,21 +163,21 @@ h1 {
     font-weight: 600;
 }
 h2 {
-    font-size: 1.6rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.6rem;
+    margin-bottom: 2rem;
     color: #fecfef;
     font-weight: 500;
 }
 p { 
-    font-size: 1.1rem; 
-    margin-bottom: 1.5rem;
+    font-size: 1.6rem; 
+    margin-bottom: 2.5rem;
     color: rgba(255, 255, 255, 0.9);
-    line-height: 1.5;
+    line-height: 1.7;
 }
 p.small {
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     color: rgba(255, 255, 255, 0.7);
-    margin-top: 0.5rem;
+    margin-top: 1rem;
 }
 
 /* สไตล์ปุ่ม */
@@ -125,10 +185,10 @@ p.small {
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     color: white;
     border: none;
-    padding: 14px 32px;
+    padding: 20px 48px;
     border-radius: 50px;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-weight: 500;
     font-family: 'Kanit', sans-serif;
     transition: all 0.3s ease;
@@ -149,8 +209,8 @@ p.small {
 .photo-frame {
     position: relative;
     width: 100%;
-    height: 220px;
-    margin-bottom: 1rem;
+    height: 480px;
+    margin-bottom: 2rem;
     border-radius: 12px;
     padding: 8px;
     background: rgba(255, 255, 255, 0.9);
@@ -170,8 +230,8 @@ p.small {
 
 /* กล่องข้อความอวยพร */
 .wish-text {
-    min-height: 160px;
-    font-size: 1.2rem;
+    min-height: 400px;
+    font-size: 1.8rem;
     line-height: 1.8;
     color: #fff;
     text-shadow: 0 2px 5px rgba(0,0,0,0.4);
@@ -186,15 +246,15 @@ p.small {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    gap: 10px;
-    margin-bottom: 1.5rem;
-    margin-top: 1rem;
+    gap: 15px;
+    margin-bottom: 2.5rem;
+    margin-top: 2rem;
 }
 
 .tarot-card {
     background-color: transparent;
     flex: 1;
-    height: 140px;
+    height: 280px;
     perspective: 1000px;
     cursor: pointer;
 }
@@ -233,7 +293,7 @@ p.small {
 .tarot-front {
     background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
     color: white;
-    font-size: 2.5rem;
+    font-size: 4.5rem;
     border: 2px solid rgba(255,255,255,0.4);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
@@ -247,7 +307,7 @@ p.small {
     background: rgba(255, 255, 255, 0.95);
     color: #fbc2eb;
     transform: rotateY(180deg);
-    font-size: 3rem; /* Icon ✨ */
+    font-size: 5rem; /* Icon ✨ */
     font-weight: 500;
     border: 2px solid #fbc2eb;
 }
@@ -262,21 +322,21 @@ p.small {
 /* --- กล่องข้อความด้านขวา (Message Box) --- */
 .message-box {
     position: absolute;
-    left: calc(50% + 220px); /* วางไว้ด้านขวาของ container */
+    left: calc(50% + 310px); /* วางไว้ด้านขวาของ container */
     top: 50%;
-    width: 420px; /* ขนาดกล่องใหญ่ขึ้น */
-    height: 520px; /* ความสูงเท่าการ์ดหลัก */
+    width: 540px; 
+    height: 880px; 
+    max-height: 95vh;
     background: rgba(40, 30, 50, 0.75); 
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 24px;
-    padding: 2.5rem; /* เพิ่มพื้นที่ด้านในให้ดูโปร่งขึ้น */
+    padding: 4.5rem 3.5rem; /* เพิ่มพื้นที่ด้านในให้ดูโปร่งขึ้น */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     
     /* Hidden initially */
     opacity: 0;
-    /* แก้ไขให้ไม่ translate(-50%, -50%) เพื่อไม่ให้ตำแหน่งคลาดเคลื่อน */
     transform: translateY(-50%) translateX(-50px) scale(0.95);
     transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
     pointer-events: none;
@@ -295,32 +355,32 @@ p.small {
 }
 
 .message-box h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1.2rem;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
     color: #fecfef;
     text-align: center;
     border-bottom: 1px solid rgba(255,255,255,0.15);
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
     font-weight: 500;
 }
 
 .message-box .msg-content {
     flex: 1;
     overflow-y: auto;
-    font-size: 1.2rem;
-    line-height: 1.8;
+    font-size: 1.65rem;
+    line-height: 1.9;
     text-align: left;
-    padding-right: 15px;
+    padding-right: 20px;
     color: rgba(255, 255, 255, 0.95);
 }
 
 /* Custom Scrollbar for msg-content */
-.msg-content::-webkit-scrollbar { width: 6px; }
+.msg-content::-webkit-scrollbar { width: 8px; }
 .msg-content::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
 .msg-content::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
 
 /* สำหรับมือถือ (หน้าจอแคบ) ให้กล่องข้อความทับซ้อนขึ้นมาแทนที่จะเลื่อนไปด้านขวา */
-@media (max-width: 880px) {
+@media (max-width: 1200px) {
     .layout-wrapper.shift-left {
         transform: translateX(0); /* ไม่ต้องเลื่อนซ้ายบนมือถือ */
     }
@@ -331,12 +391,35 @@ p.small {
         transform: translate(-50%, -50%) scale(0.9);
         z-index: 10; /* ทับการ์ด */
         background: rgba(30, 20, 40, 0.95);
-        width: 90%;
-        max-width: 420px;
+        width: 90vw;
+        max-width: 540px;
     }
     .message-box.show {
         transform: translate(-50%, -50%) scale(1);
     }
+}
+
+/* สำหรับจอมือถือ (ปรับขนาดตัวอักษรให้พอดีจอ) */
+@media (max-width: 768px) {
+    .card-page { padding: 2rem 1.5rem; }
+    h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.8rem; margin-bottom: 1.2rem; }
+    p { font-size: 1.3rem; margin-bottom: 1.5rem; }
+    p.small { font-size: 1.1rem; }
+    .btn-style { font-size: 1.2rem; padding: 14px 32px; margin-top: 1.5rem; }
+    .photo-frame { height: 280px; }
+    .wish-text { min-height: 250px; font-size: 1.4rem; }
+    
+    .tarot-container { gap: 10px; }
+    .tarot-card { height: 140px; }
+    .tarot-front { font-size: 2.5rem; }
+    .tarot-back { font-size: 3rem; }
+    
+    .message-box {
+        padding: 2.5rem 1.5rem;
+    }
+    .message-box h3 { font-size: 2rem; margin-bottom: 1.2rem; }
+    .message-box .msg-content { font-size: 1.3rem; line-height: 1.6; }
 }
 
 /* Particle effect เล็กๆ ด้านหลังการ์ด */

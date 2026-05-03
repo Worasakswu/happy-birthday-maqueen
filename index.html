@@ -24,8 +24,8 @@
             <!-- Page 1: Welcome -->
             <div class="card-page active" id="page-welcome">
                 <div style="font-size: 4rem; margin-bottom: 10px; animation: bounce 2s infinite;">🎂</div>
-                <h1>Happy Birthday นะมิ้ง!</h1>
-                <p>มีความสุขมากๆ ในทุกๆ วันนะ :)</p>
+                <h1>Happy Birthday</h1>
+                <p>มีความสุขมากๆ ในทุกๆวันน้า :)</p>
                 <button class="btn-style" onclick="goToPage('page-gallery')">เปิดกล่องของขวัญ</button>
                 <style>
                     @keyframes bounce {
@@ -37,6 +37,11 @@
 
             <!-- Page 2: Gallery -->
             <div class="card-page" id="page-gallery">
+                <!-- วิดีโอพื้นหลังแบบจางๆ -->
+                <video autoplay muted loop playsinline class="page-bg-video">
+                    <source src="assets/videos/congrat.mov" type="video/mp4">
+                </video>
+                
                 <h2>ความทรงจำดีๆ :)</h2>
                 <div class="photo-frame">
                     <img src="assets/images/salisa.png" alt="salisaa">
@@ -47,11 +52,16 @@
 
             <!-- Page 3: Wishes -->
             <div class="card-page" id="page-wishes">
+                <!-- วิดีโอพื้นหลังแบบจางๆ -->
+                <video autoplay muted loop playsinline class="page-bg-video">
+                    <source src="assets/videos/congrat.mov" type="video/mp4">
+                </video>
+                
                 <h2>HBD MING! 💖</h2>
                 <div class="wish-text" id="typewriter-text">
                     <!-- Text will be typed here -->
                 </div>
-                <button class="btn-style" onclick="goToCards()">🎉สุ่มการ์ดครับ!:) </button>
+                <button class="btn-style" onclick="goToCards()">🎉สุ่มการ์ดครับๆ:) </button>
             </div>
 
             <!-- Page 4: Choose a Card -->
