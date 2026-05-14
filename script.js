@@ -46,13 +46,13 @@ function startTypewriter() {
 
     typewriter
         .pauseFor(500)
-        .typeString('<span style="color: #ff9a9e;">ขอให้มิ้งมีความสุขที่สุดในโลก...</span>')
+        .typeString('<span style="color: #ff9a9e;">สสวก.นะคับขอให้มิ้งมีความสุขที่สุดในโลก</span>')
         .pauseFor(300)
-        .typeString('<br>คิดอะไรก็ขอให้ได้ตามหวังนะ 🌟')
+        .typeString('<br>และขอให้ในอนาคตมีแต่สิ่งดีๆเกิดขึ้น 🌟')
         .pauseFor(300)
-        .typeString('<br>อยู่เป็นรอยยิ้มแบบนี้ไปนานๆ 😊')
+        .typeString('<br>คิดอะไรก็ขอให้ได้ตามหวังน้า 😊')
         .pauseFor(300)
-        .typeString('<br>ฉลองด้วยกันไปทุกปีเลยนะ 💕')
+        .typeString('<br>เลิฟเลิฟ ')
         .start();
 }
 
@@ -112,6 +112,15 @@ function flipCard(cardElement, cardIndex) {
     // ดึงข้อความที่ซ่อนไว้มาแสดงในกล่องข้อความด้านขวา
     const hiddenMsg = document.getElementById('msg-data-' + cardIndex).innerHTML;
     document.getElementById('msg-content').innerHTML = hiddenMsg;
+
+    // เปลี่ยน Header ให้ตรงกับไพ่ที่เลือก
+    if (cardIndex === 2) {
+        document.getElementById('msg-header-text').style.display = 'none';
+        document.getElementById('msg-header-qr').style.display = 'block';
+    } else {
+        document.getElementById('msg-header-text').style.display = 'block';
+        document.getElementById('msg-header-qr').style.display = 'none';
+    }
 
     // เลื่อน Layout และแสดงกล่องข้อความด้านขวา
     setTimeout(() => {
