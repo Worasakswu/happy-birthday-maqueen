@@ -379,6 +379,55 @@ p.small {
 .msg-content::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
 .msg-content::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
 
+/* --- CSS 4-Leaf Clover --- */
+.clover-wrapper {
+    text-align: center;
+    margin-top: 50px;
+}
+.clover-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    animation: floatingClover 4s ease-in-out infinite;
+}
+.leaf {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #a8ff78 0%, #78ffd6 100%);
+    border-radius: 50% 50% 0 50%;
+    box-shadow: 0 0 15px rgba(120, 255, 214, 0.4);
+    opacity: 0.9;
+}
+.leaf-1 { top: 5px; left: 5px; transform: rotate(0deg); }
+.leaf-2 { top: 5px; right: 5px; transform: rotate(90deg); }
+.leaf-3 { bottom: 5px; right: 5px; transform: rotate(180deg); }
+.leaf-4 { bottom: 5px; left: 5px; transform: rotate(270deg); }
+.clover-stem {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 6px;
+    height: 45px;
+    background: linear-gradient(to bottom, #78ffd6, rgba(120, 255, 214, 0));
+    transform: translateX(-50%) rotate(-15deg);
+    border-radius: 3px;
+    z-index: -1;
+}
+.clover-text {
+    font-size: 1.8rem;
+    color: #a8ff78;
+    margin-top: 50px;
+    font-weight: 500;
+    text-shadow: 0 0 15px rgba(168, 255, 120, 0.4);
+}
+@keyframes floatingClover {
+    0% { transform: translateY(0) scale(1) rotate(0deg); }
+    50% { transform: translateY(-15px) scale(1.05) rotate(5deg); }
+    100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+
 /* สำหรับมือถือ (หน้าจอแคบ) ให้กล่องข้อความทับซ้อนขึ้นมาแทนที่จะเลื่อนไปด้านขวา */
 @media (max-width: 1200px) {
     .layout-wrapper.shift-left {

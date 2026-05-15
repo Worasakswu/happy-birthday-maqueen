@@ -128,3 +128,11 @@ function flipCard(cardElement, cardIndex) {
         document.getElementById('message-box').classList.add('show');
     }, 600); // รอให้ไพ่พลิกเกือบเสร็จ
 }
+
+// ปรับความเร็ววิดีโอพื้นหลังให้ช้าลง
+document.addEventListener('DOMContentLoaded', () => {
+    const bgVideos = document.querySelectorAll('.page-bg-video');
+    bgVideos.forEach(video => {
+        video.playbackRate = 0.5; // เล่นช้าลงครึ่งนึง
+    });
+});
