@@ -46,13 +46,17 @@ function startTypewriter() {
 
     typewriter
         .pauseFor(500)
-        .typeString('<span style="color: #ff9a9e;">สสวก.นะคับขอให้มิ้งมีความสุขที่สุดในโลก</span>')
+        .typeString('<span style="color: #ff9a9e;">สสวก.นะคับขอให้มิ้งมีความสุขมากๆ</span>')
         .pauseFor(300)
         .typeString('<br>และขอให้ในอนาคตมีแต่สิ่งดีๆเกิดขึ้น 🌟')
         .pauseFor(300)
-        .typeString('<br>คิดอะไรก็ขอให้ได้ตามหวังน้า 😊')
+        .typeString('<br>คิดสิ่งใดก็ขอให้สมดังหวังน้า ')
         .pauseFor(300)
-        .typeString('<br>เลิฟเลิฟ ')
+        .typeString('<br>อยู่ตรงนี้เป็นกำลังใจให้เสมออเลิฟเลิฟ😊 ')
+        .pauseFor(300)
+        .typeString('<br>และกำลังจะเรียนจบแหล่วสินะะยินดีด้วยล่วงหน้าคับ ')
+        .pauseFor(300)
+        .typeString('<br>(ไว้ไปถ่ายรูปอีกหุหุมิ้งต้องไปรับปริญญานะ555:))) ')
         .start();
 }
 
@@ -136,3 +140,63 @@ document.addEventListener('DOMContentLoaded', () => {
         video.playbackRate = 0.5; // เล่นช้าลงครึ่งนึง
     });
 });
+
+// ฟังก์ชันเปิดเผยใบโคลเวอร์
+function revealClover() {
+    const msgContent = document.getElementById('msg-content');
+    const treeSection = msgContent.querySelector('#tree-section');
+    const cloverSection = msgContent.querySelector('#clover-section');
+    
+    if(!treeSection || !cloverSection) return;
+
+    // Fade out tree
+    treeSection.style.transition = 'opacity 0.5s ease';
+    treeSection.style.opacity = '0';
+    
+    setTimeout(() => {
+        treeSection.style.display = 'none';
+        cloverSection.style.display = 'block';
+        
+        // Trigger reflow
+        void cloverSection.offsetWidth;
+        
+        cloverSection.style.opacity = '1';
+        
+        // Add confetti when clover appears
+        confetti({ 
+            particleCount: 50, 
+            spread: 60,
+            origin: { y: 0.6 },
+            colors: ['#a8ff78', '#78ffd6', '#ffffff']
+        });
+    }, 500);
+}
+
+// ฟังก์ชันเปิดเผยคลิปวิดีโอแมว
+function revealCatVideo() {
+    const msgContent = document.getElementById('msg-content');
+    const svgSection = msgContent.querySelector('#cat-svg-section');
+    const videoSection = msgContent.querySelector('#cat-video-section');
+    
+    if(!svgSection || !videoSection) return;
+
+    // Fade out SVG cat
+    svgSection.style.transition = 'opacity 0.5s ease';
+    svgSection.style.opacity = '0';
+    
+    setTimeout(() => {
+        svgSection.style.display = 'none';
+        videoSection.style.display = 'block';
+        
+        // Trigger reflow
+        void videoSection.offsetWidth;
+        
+        videoSection.style.opacity = '1';
+        
+        // Play the video explicitly just in case autoplay didn't trigger
+        const video = videoSection.querySelector('video');
+        if (video) {
+            video.play().catch(e => console.log('Autoplay prevented:', e));
+        }
+    }, 500);
+}

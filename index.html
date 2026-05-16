@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>salisa</title>
+    <title>slsls</title>
     <!-- Favicon รูปเค้ก -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -40,8 +40,8 @@
             <div class="card-page active" id="page-welcome">
                 <div style="font-size: 4rem; margin-bottom: 10px; animation: bounce 2s infinite;">🎂</div>
                 <h1>Happy Birthday</h1>
-                <p>มีความสุขมากๆ ในทุกๆวันน้า :)</p>
-                <button class="btn-style" onclick="goToPage('page-gallery')">เปิดกล่องของขวัญ</button>
+                <p>◡̈◡̈☁</p>
+                <button class="btn-style" onclick="goToPage('page-gallery')">ไปหน้าต่อไป</button>
                 <style>
                     @keyframes bounce {
                         0%, 100% { transform: translateY(0); }
@@ -61,8 +61,8 @@
                 <div class="photo-frame">
                     <img src="assets/images/salisa.png" alt="salisaa">
                 </div>
-                <p class="small">ming bd</p>
-                <button class="btn-style" onclick="goToPage('page-wishes')">อ่านคำอวยพร</button>
+                <p class="small">ming•.• bd</p>
+                <button class="btn-style" onclick="goToPage('page-wishes')">หน้าต่อไป</button>
             </div>
 
             <!-- Page 3: Wishes -->
@@ -76,13 +76,13 @@
                 <div class="wish-text" id="typewriter-text">
                     <!-- Text will be typed here -->
                 </div>
-                <button class="btn-style" onclick="goToCards()">🎉สุ่มการ์ดครับๆ:) </button>
+                <button class="btn-style" onclick="goToCards()">🎉สุ่มการ์ดคับบ </button>
             </div>
 
             <!-- Page 4: Choose a Card -->
             <div class="card-page" id="page-cards">
-                <h2>สุ่มการ์ด 1 ใบ 🔮</h2>
-                <p class="small">ลองเลือกมาซักใบดูสิ==)</p>
+                <h2>สุ่มการ์ด🔮</h2>
+                <p class="small">ลองเลือกมาซักใบดูสิ</p>
                 
                 <div class="tarot-container">
                     <div class="tarot-card" onclick="flipCard(this, 1)">
@@ -90,7 +90,7 @@
                             <div class="tarot-front">?</div>
                             <div class="tarot-back">✨
                                 <div id="msg-data-1" style="display: none;">
-                                    A bouquet of three gerberas<br><br>
+                                    ดอกไม้จากเรื่อง drawing closer<br><br>
                                     <div style="text-align: center; margin-top: 20px;">
                                         <img src="assets/images/Gerberas.jpg" alt="Gerberas Bouquet" style="width: 100%; max-width: 300px; border-radius: 16px; margin-top: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.4);">
                                     </div>
@@ -103,7 +103,29 @@
                             <div class="tarot-front">?</div>
                             <div class="tarot-back">✨
                                 <div id="msg-data-2" style="display: none;">
-                                    <div class="clover-wrapper">
+                                    <div id="tree-section" style="text-align: center; margin-top: 30px; cursor: pointer;" onclick="revealClover()">
+                                        <svg viewBox="0 0 200 250" style="width: 150px; filter: drop-shadow(0 0 15px rgba(168, 255, 120, 0.4)); animation: floatTree 3s ease-in-out infinite;">
+                                            <!-- Trunk -->
+                                            <path d="M90,240 Q100,150 100,100 Q100,150 110,240 Z" fill="#8b4513" />
+                                            <path d="M100,150 Q120,100 130,80" fill="none" stroke="#6b340e" stroke-width="6" stroke-linecap="round" />
+                                            <path d="M100,170 Q80,120 70,100" fill="none" stroke="#6b340e" stroke-width="5" stroke-linecap="round" />
+                                            
+                                            <!-- Leaves -->
+                                            <circle cx="100" cy="80" r="45" fill="#78ffd6" opacity="0.95" />
+                                            <circle cx="130" cy="70" r="35" fill="#a8ff78" opacity="0.95" />
+                                            <circle cx="70" cy="90" r="30" fill="#a8ff78" opacity="0.95" />
+                                            <circle cx="100" cy="40" r="35" fill="#6bf2a3" opacity="0.95" />
+                                            
+                                            <!-- Sparkles/Magic dots -->
+                                            <circle cx="90" cy="50" r="3" fill="#fff" opacity="0.9" />
+                                            <circle cx="120" cy="80" r="4" fill="#fff" opacity="0.8" />
+                                            <circle cx="80" cy="100" r="2" fill="#fff" opacity="0.9" />
+                                            <circle cx="110" cy="30" r="3" fill="#fff" opacity="0.8" />
+                                        </svg>
+                                        <p style="font-size: 1.5rem; color: #a8ff78; margin-top: 20px; text-shadow: 0 0 10px rgba(168, 255, 120, 0.4); animation: pulseText 1.5s infinite;"> แตะที่ต้นไม้สิ </p>
+                                    </div>
+
+                                    <div id="clover-section" class="clover-wrapper" style="display: none; opacity: 0; transition: opacity 1s ease;">
                                         <div class="clover-container">
                                             <div class="leaf leaf-1"></div>
                                             <div class="leaf leaf-2"></div>
@@ -111,7 +133,7 @@
                                             <div class="leaf leaf-4"></div>
                                             <div class="clover-stem"></div>
                                         </div>
-                                        <p class="clover-text">ขอให้โชคดีในทุกๆ ก้าวเดินนะมิ้ง</p>
+                                        <p class="clover-text" style="line-height: 1.5;">ยินดีด้วยมิ้งได้ค้นพบใบโคลเวอร์<br>ที่เป็นสัญลักษณ์แห่งความโชคดีฮะ</p>
                                     </div>
                                 </div>
                             </div>
@@ -122,10 +144,47 @@
                             <div class="tarot-front">?</div>
                             <div class="tarot-back">✨
                                 <div id="msg-data-3" style="display: none;">
-                                    แมวมิ้งมาอวยพร<br><br>
-                                    <video autoplay muted loop playsinline style="width: 100%; border-radius: 12px; margin-top: 10px;">
-                                        <source src="assets/videos/cat.mov">
-                                    </video>
+                                    <div id="cat-svg-section" style="text-align: center; margin-top: 30px; cursor: pointer;" onclick="revealCatVideo()">
+                                        <svg viewBox="0 0 200 150" style="width: 150px; filter: drop-shadow(0 0 15px rgba(252, 163, 17, 0.4)); animation: breatheCat 3s ease-in-out infinite;">
+                                            <!-- Tail -->
+                                            <path d="M40,120 Q10,120 20,80 Q30,50 50,70" fill="none" stroke="#e69c24" stroke-width="15" stroke-linecap="round" />
+                                            
+                                            <!-- Body -->
+                                            <ellipse cx="110" cy="100" rx="60" ry="40" fill="#fca311" />
+                                            <ellipse cx="110" cy="115" rx="45" ry="20" fill="#ffd166" /> <!-- Lighter belly -->
+                                            
+                                            <!-- Head -->
+                                            <circle cx="60" cy="80" r="35" fill="#fca311" />
+                                            
+                                            <!-- Ears -->
+                                            <polygon points="40,55 30,25 60,45" fill="#e69c24" />
+                                            <polygon points="75,50 90,20 85,55" fill="#e69c24" />
+                                            
+                                            <!-- Inner Ears -->
+                                            <polygon points="38,50 33,35 52,45" fill="#ffb5a7" />
+                                            <polygon points="77,48 85,32 82,50" fill="#ffb5a7" />
+                                            
+                                            <!-- Closed Eyes -->
+                                            <path d="M45,85 Q50,90 55,85" fill="none" stroke="#8a4b08" stroke-width="3" stroke-linecap="round" />
+                                            <path d="M65,85 Q70,90 75,85" fill="none" stroke="#8a4b08" stroke-width="3" stroke-linecap="round" />
+                                            
+                                            <!-- Nose -->
+                                            <polygon points="58,95 62,95 60,98" fill="#e07a5f" />
+                                            
+                                            <!-- Zzz -->
+                                            <text x="120" y="50" fill="#fff" font-size="22" font-family="Arial, sans-serif" font-weight="bold" class="zzz zzz-1">Z</text>
+                                            <text x="145" y="30" fill="#fff" font-size="16" font-family="Arial, sans-serif" font-weight="bold" class="zzz zzz-2">z</text>
+                                            <text x="160" y="15" fill="#fff" font-size="12" font-family="Arial, sans-serif" font-weight="bold" class="zzz zzz-3">z</text>
+                                        </svg>
+                                        <p style="font-size: 1.5rem; color: #fca311; margin-top: 20px; text-shadow: 0 0 10px rgba(252, 163, 17, 0.4); animation: pulseText 1.5s infinite;"> แตะเพื่อปลุกน้องแมว </p>
+                                    </div>
+
+                                    <div id="cat-video-section" style="display: none; opacity: 0; transition: opacity 1s ease;">
+                                        แมวมิ้งมาอวยพร<br><br>
+                                        <video autoplay muted loop playsinline style="width: 100%; border-radius: 12px; margin-top: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+                                            <source src="assets/videos/cat.mov">
+                                        </video>
+                                    </div>
                                 </div>
                             </div>
                         </div>

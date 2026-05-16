@@ -428,6 +428,30 @@ p.small {
     100% { transform: translateY(0) scale(1) rotate(0deg); }
 }
 
+@keyframes floatTree {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes pulseText {
+    0% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.6; transform: scale(1); }
+}
+
+@keyframes breatheCat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+@keyframes zzz {
+    0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+    50% { opacity: 1; transform: translate(10px, -15px) scale(1); }
+    100% { opacity: 0; transform: translate(20px, -30px) scale(1.5); }
+}
+
 /* สำหรับมือถือ (หน้าจอแคบ) ให้กล่องข้อความทับซ้อนขึ้นมาแทนที่จะเลื่อนไปด้านขวา */
 @media (max-width: 1200px) {
     .layout-wrapper.shift-left {
