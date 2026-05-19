@@ -213,8 +213,14 @@ function togglePlayPause() {
     const progressHandle = msgContent.querySelector('#progress-handle');
     const timeCurrent = msgContent.querySelector('.time-current');
     const audio = msgContent.querySelector('#hbd-audio');
+    const volumeSlider = msgContent.querySelector('#volume-slider');
     
     if (!albumCover || !audio) return;
+
+    // Sync volume with slider before playing
+    if (volumeSlider) {
+        audio.volume = volumeSlider.value;
+    }
 
     isPlaying = !isPlaying;
 
@@ -256,5 +262,15 @@ function togglePlayPause() {
         iconPlay.style.display = 'block';
         iconPause.style.display = 'none';
         audio.pause();
+    }
+}
+
+// ฟังก์ชันปรับลด/เพิ่มเสียง
+function changeVolume(value) {
+    const msgContent = document.getElementById('msg-content');
+    if (!msgContent) return;
+    const audio = msgContent.querySelector('#hbd-audio');
+    if (audio) {
+        audio.volume = value;
     }
 }
