@@ -200,3 +200,61 @@ function revealCatVideo() {
         }
     }, 500);
 }
+
+// --- Music Player Logic ---
+let isPlaying = false;
+
+function togglePlayPause() {
+    const msgContent = document.getElementById('msg-content');
+    const albumCover = msgContent.querySelector('#album-cover');
+    const iconPlay = msgContent.querySelector('#icon-play');
+    const iconPause = msgContent.querySelector('#icon-pause');
+    const progressFill = msgContent.querySelector('#progress-fill');
+    const progressHandle = msgContent.querySelector('#progress-handle');
+    const timeCurrent = msgContent.querySelector('.time-current');
+    const audio = msgContent.querySelector('#hbd-audio');
+    
+    if (!albumCover || !audio) return;
+
+    isPlaying = !isPlaying;
+
+    if (isPlaying) {
+        albumCover.classList.add('playing');
+        iconPlay.style.display = 'none';
+        iconPause.style.display = 'block';
+        audio.play().catch(e => console.log('Audio play failed:', e));
+        
+        // Setup timeupdate listener only once
+        if (!audio.hasListener) {
+            audio.hasListener = true;
+            audio.addEventListener('timeupdate', () => {
+                if (audio.duration) {
+                    const progressPercent = (audio.currentTime / audio.duration) * 100;
+                    progressFill.style.width = `${progressPercent}%`;
+                    progressHandle.style.left = `${progressPercent}%`;
+                    
+                    let currentMins = Math.floor(audio.currentTime / 60);
+                    let currentSecs = Math.floor(audio.currentTime % 60);
+                    timeCurrent.innerText = `${currentMins}:${currentSecs < 10 ? '0' : ''}${currentSecs}`;
+                }
+            });
+            
+            // Auto reset when song ends
+            audio.addEventListener('ended', () => {
+                isPlaying = false;
+                albumCover.classList.remove('playing');
+                iconPlay.style.display = 'block';
+                iconPause.style.display = 'none';
+                progressFill.style.width = `0%`;
+                progressHandle.style.left = `0%`;
+                timeCurrent.innerText = `0:00`;
+            });
+        }
+        
+    } else {
+        albumCover.classList.remove('playing');
+        iconPlay.style.display = 'block';
+        iconPause.style.display = 'none';
+        audio.pause();
+    }
+}

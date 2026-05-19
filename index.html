@@ -82,7 +82,7 @@
             <!-- Page 4: Choose a Card -->
             <div class="card-page" id="page-cards">
                 <h2>สุ่มการ์ด🔮</h2>
-                <p class="small">ลองเลือกมาซักใบดูสิ</p>
+                <p class="small">ลองเลือกซักใบครัช</p>
                 
                 <div class="tarot-container">
                     <div class="tarot-card" onclick="flipCard(this, 1)">
@@ -90,9 +90,54 @@
                             <div class="tarot-front">?</div>
                             <div class="tarot-back">✨
                                 <div id="msg-data-1" style="display: none;">
-                                    ดอกไม้จากเรื่อง drawing closer<br><br>
-                                    <div style="text-align: center; margin-top: 20px;">
-                                        <img src="assets/images/Gerberas.jpg" alt="Gerberas Bouquet" style="width: 100%; max-width: 300px; border-radius: 16px; margin-top: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.4);">
+                                    <div class="music-player">
+                                        <!-- Album Art -->
+                                        <div class="album-art-container">
+                                            <img src="assets/images/smile.JPEG" alt="Album Cover" class="album-cover" id="album-cover">
+                                        </div>
+                                        
+                                        <!-- Song Info -->
+                                        <div class="song-info">
+                                            <h2 class="song-title">Happy Birthday Ming</h2>
+                                            <p class="song-artist">สุขสันต์วันเกิดนะ 🎉</p>
+                                        </div>
+                                        
+                                        <!-- Progress Bar -->
+                                        <div class="progress-container">
+                                            <div class="time-current">0:00</div>
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" id="progress-fill"></div>
+                                                <div class="progress-handle" id="progress-handle"></div>
+                                            </div>
+                                            <div class="time-total">ตลอดไป</div>
+                                        </div>
+                                        
+                                        <!-- Controls -->
+                                        <div class="player-controls">
+                                            <button class="control-btn prev-btn">
+                                                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                                            </button>
+                                            <button class="control-btn play-btn" id="play-pause-btn" onclick="togglePlayPause()">
+                                                <svg id="icon-play" viewBox="0 0 24 24" width="40" height="40" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                                <svg id="icon-pause" viewBox="0 0 24 24" width="40" height="40" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                            </button>
+                                            <button class="control-btn next-btn">
+                                                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                                            </button>
+                                        </div>
+                                        
+                                        <!-- Lyrics / Message -->
+                                        <div class="lyrics-container">
+                                            <p class="lyrics-text">
+                                                ขอบคุณที่อยู่เคียงข้างกันมาตลอดนะ<br>
+                                                ขอให้ที่รักมีความสุขมากๆ<br>
+                                                สุขภาพร่างกายแข็งแรง<br>
+                                                เป็นรอยยิ้มให้กันแบบนี้ตลอดไปนะ ❤️
+                                            </p>
+                                        </div>
+                                        
+                                        <!-- Audio Element -->
+                                        <audio id="hbd-audio" src="assets/videos/Waltz for Moon.mp3" preload="auto"></audio>
                                     </div>
                                 </div>
                             </div>
