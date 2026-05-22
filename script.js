@@ -142,9 +142,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Typewriter effect for Happy Birthday
     const hbdText = document.getElementById('hbd-text');
+    const nextBtn = document.getElementById('next-btn-welcome');
     if (hbdText) {
         const text = hbdText.innerText;
         hbdText.innerHTML = '';
+        const delayPerChar = 0.2; // ทำให้ช้าลง (0.2s ต่อตัวอักษร)
+        const animationDuration = 0.5; // ระยะเวลา fade ของแต่ละตัวอักษร
+
         text.split('').forEach((char, index) => {
             const span = document.createElement('span');
             // preserve spaces
@@ -154,9 +158,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 span.innerText = char;
             }
             span.style.opacity = '0';
-            span.style.animation = `fadeInChar 0.1s forwards ${index * 0.1}s`;
+            span.style.animation = `fadeInChar ${animationDuration}s forwards ${index * delayPerChar}s`;
             hbdText.appendChild(span);
         });
+
+        // แสดงปุ่มหลังจากตัวอักษรปรากฎครบ
+        if (nextBtn) {
+            const totalAnimationTime = (text.length * delayPerChar + animationDuration) * 1000;
+            setTimeout(() => {
+                nextBtn.style.opacity = '1';
+                nextBtn.style.pointerEvents = 'auto';
+            }, totalAnimationTime);
+        }
     }
 });
 
