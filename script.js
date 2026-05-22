@@ -164,18 +164,24 @@ document.addEventListener('DOMContentLoaded', () => {
             hbdText.appendChild(span);
         });
 
-        // แสดงปุ่มและอิโมจิเค้กหลังจากตัวอักษรปรากฎครบ
+        // แสดงอิโมจิเค้กและปุ่มตามลำดับ
         if (nextBtn || cakeEmoji) {
             const totalAnimationTime = (text.length * delayPerChar + animationDuration) * 1000;
+            
+            // ให้เค้กปรากฎขึ้นมาก่อนเมื่อตัวอักษรพิมพ์เสร็จ
+            setTimeout(() => {
+                if (cakeEmoji) {
+                    cakeEmoji.style.opacity = '1';
+                }
+            }, totalAnimationTime);
+
+            // หน่วงเวลาอีก 1.5 วินาที ค่อยแสดงปุ่มไปหน้าต่อไป
             setTimeout(() => {
                 if (nextBtn) {
                     nextBtn.style.opacity = '1';
                     nextBtn.style.pointerEvents = 'auto';
                 }
-                if (cakeEmoji) {
-                    cakeEmoji.style.opacity = '1';
-                }
-            }, totalAnimationTime);
+            }, totalAnimationTime + 1500);
         }
     }
 });
