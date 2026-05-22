@@ -139,6 +139,25 @@ document.addEventListener('DOMContentLoaded', () => {
     bgVideos.forEach(video => {
         video.playbackRate = 0.5; // เล่นช้าลงครึ่งนึง
     });
+
+    // Typewriter effect for Happy Birthday
+    const hbdText = document.getElementById('hbd-text');
+    if (hbdText) {
+        const text = hbdText.innerText;
+        hbdText.innerHTML = '';
+        text.split('').forEach((char, index) => {
+            const span = document.createElement('span');
+            // preserve spaces
+            if (char === ' ') {
+                span.innerHTML = '&nbsp;';
+            } else {
+                span.innerText = char;
+            }
+            span.style.opacity = '0';
+            span.style.animation = `fadeInChar 0.1s forwards ${index * 0.1}s`;
+            hbdText.appendChild(span);
+        });
+    }
 });
 
 // ฟังก์ชันเปิดเผยใบโคลเวอร์

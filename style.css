@@ -154,13 +154,16 @@ body {
 
 /* สไตล์ข้อความ */
 h1 { 
+    font-family: 'Poppins', sans-serif;
     font-size: 3.5rem;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 4px 10px rgba(255, 154, 158, 0.3);
+    color: #ffffff;
+    text-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
     font-weight: 600;
+}
+
+@keyframes fadeInChar {
+    to { opacity: 1; }
 }
 h2 {
     font-size: 2.6rem;
