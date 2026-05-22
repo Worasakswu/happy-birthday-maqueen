@@ -98,7 +98,7 @@ body {
 
 /* เพิ่มรูปพื้นหลังลางๆ เฉพาะหน้าแรก */
 #page-welcome {
-    background: linear-gradient(rgba(30, 30, 40, 0.85), rgba(30, 30, 40, 0.85)), url('assets/images/salisakid.png');
+    background: linear-gradient(rgba(30, 30, 40, 0.85), rgba(30, 30, 40, 0.85)), url('assets/images/salisakid.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -114,14 +114,14 @@ body {
 
 /* รูปที่ 2: smile.JPEG */
 #page-welcome::before {
-    background-image: linear-gradient(rgba(30, 30, 40, 0.85), rgba(30, 30, 40, 0.85)), url('assets/images/smile.JPEG');
+    background-image: linear-gradient(rgba(30, 30, 40, 0.85), rgba(30, 30, 40, 0.85)), url('assets/images/smile.jpg');
     z-index: -2;
     animation: fadeSmile 15s infinite;
 }
 
 /* รูปที่ 3: tt.jpg */
 #page-welcome::after {
-    background-image: linear-gradient(rgba(30, 30, 40, 0.85), rgba(30, 30, 40, 0.85)), url('assets/images/tt.jpg');
+    background-image: linear-gradient(rgba(30, 30, 40, 0.85), rgba(30, 30, 40, 0.85)), url('assets/images/tt.png');
     z-index: -1;
     animation: fadeTT 15s infinite;
 }
@@ -296,6 +296,13 @@ p.small {
     font-size: 4.5rem;
     border: 2px solid rgba(255,255,255,0.4);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card-sparkle {
+    width: 60px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4));
 }
 
 .tarot-card:hover:not(.disabled):not(.flipped) .tarot-front {
